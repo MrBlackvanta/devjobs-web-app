@@ -16,7 +16,8 @@ WORKDIR /app
 COPY --from=build /app .
 USER app
 
-ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_URLS=http://+:8080 \
+    ConnectionStrings__Default="Data Source=/tmp/jobs.db"
 EXPOSE 8080
 
 ENTRYPOINT ["dotnet", "DevjobsApi.dll"]

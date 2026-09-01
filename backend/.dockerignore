@@ -1,0 +1,16 @@
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+appsettings.local.json
+appsettings.*.local.json
+*.pfx
+Dockerfile
+.dockerignore
+README.md
+DevjobsApi.http

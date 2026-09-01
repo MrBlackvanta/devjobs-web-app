@@ -19,8 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\jobs.json">
+    <None Update="Data/jobs.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
 
