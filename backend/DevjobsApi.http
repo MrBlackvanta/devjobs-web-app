@@ -1,0 +1,20 @@
+@DevjobsApi_HostAddress = http://localhost:5175
+
+GET {{DevjobsApi_HostAddress}}/jobs
+Accept: application/json
+
+###
+
+GET {{DevjobsApi_HostAddress}}/jobs?search=engineer&location=united&fullTime=true
+Accept: application/json
+
+###
+
+GET {{DevjobsApi_HostAddress}}/jobs/1
+Accept: application/json
+
+###
+
+GET {{DevjobsApi_HostAddress}}/health
+
+###
