@@ -9,6 +9,7 @@
     "clean:fetch-cache": "node -e \"require('fs').rmSync('.next/cache/fetch-cache',{recursive:true,force:true})\"",
     "build:worker": "pnpm clean:fetch-cache && opennextjs-cloudflare build",
     "preview:worker": "pnpm build:worker && opennextjs-cloudflare preview",
+    "deploy": "pnpm build:worker && opennextjs-cloudflare deploy",
     "start": "next start",
     "lint": "eslint"
   },
