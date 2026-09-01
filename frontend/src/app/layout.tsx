@@ -1,6 +1,6 @@
 import { SiteHeader } from "@/components/layout";
-import { siteName, siteUrl } from "@/data/site";
-import { pageMetadata } from "@/lib/metadata";
+import { siteName, siteUrl } from "@/data";
+import { pageMetadata } from "@/lib";
 import { Providers } from "@/providers";
 import type { Metadata, Viewport } from "next";
 import { Kumbh_Sans } from "next/font/google";
