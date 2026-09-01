@@ -1,0 +1,110 @@
+@import "tailwindcss";
+@source not "../../*.md";
+
+@custom-variant dark (&:is(.dark, .dark *));
+
+:root {
+  --page: #f4f6f8;
+  --surface: #ffffff;
+  --heading: #19202d;
+  --muted: #617289;
+  --accent: #5964e0;
+  --accent-strong: #3340d9;
+  --placeholder: #70757d;
+  --control: #19202d1a;
+  --control-edge: #667890;
+  --divider: #6e809833;
+  --tint: #5964e01a;
+  --tint-hover: #5964e059;
+  --on-tint: #545fdf;
+  --on-tint-hover: #3340d9;
+}
+
+html.dark {
+  --page: #121721;
+  --surface: #19202d;
+  --heading: #ffffff;
+  --muted: #9daec2;
+  --accent: #939bf4;
+  --accent-strong: #939bf4;
+  --placeholder: #8c9096;
+  --control: #ffffff1a;
+  --control-edge: #667890;
+  --tint: #ffffff1a;
+  --tint-hover: #ffffff59;
+  --on-tint: #ffffff;
+  --on-tint-hover: #ffffff;
+}
+
+@theme {
+  --color-violet: #5964e0;
+  --color-violet-deep: #4a54d4;
+  --color-midnight: #121721;
+  --color-navy: #19202d;
+  --color-light-grey: #f4f6f8;
+  --color-grey: #9daec2;
+  --color-dark-grey: #6e8098;
+
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-heading: var(--heading);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-placeholder: var(--placeholder);
+  --color-control: var(--control);
+  --color-control-edge: var(--control-edge);
+  --color-divider: var(--divider);
+  --color-tint: var(--tint);
+  --color-tint-hover: var(--tint-hover);
+  --color-on-tint: var(--on-tint);
+  --color-on-tint-hover: var(--on-tint-hover);
+  --color-scrim: #00000080;
+
+  --text-h1: 1.75rem;
+  --text-h1--line-height: 2.125rem;
+  --text-h2: 1.5rem;
+  --text-h2--line-height: 1.8125rem;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.5rem;
+  --text-body: 1rem;
+  --text-body--line-height: 1.625rem;
+  --text-label: 0.875rem;
+  --text-label--line-height: 1.125rem;
+  --text-mark: 3rem;
+  --text-mark--line-height: 1;
+
+  --radius-card: 0.375rem;
+  --radius-button: 0.3125rem;
+  --radius-tile: 0.9375rem;
+  --radius-check: 0.1875rem;
+  --radius-band: 6.25rem;
+
+  --font-kumbh-sans: "Kumbh Sans", sans-serif;
+}
+
+@layer base {
+  html {
+    @apply font-kumbh-sans text-body;
+    color-scheme: light;
+    overflow-y: scroll;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-page text-muted;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply text-heading font-bold;
+  }
+  :focus-visible {
+    @apply outline-accent outline-2 outline-offset-2;
+  }
+}
+
+@utility v-band-focus {
+  @apply focus-visible:outline-white;
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "devjobs-web-app",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-08-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "API_URL": "https://vanta-devjobs-api.onrender.com",
+    "SITE_URL": "https://devjobs-web-app.abdelrhman-ahmed8881.workers.dev"
+  }
+}
