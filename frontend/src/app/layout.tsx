@@ -1,5 +1,7 @@
+import { SiteHeader } from "@/components/layout";
 import { siteName, siteUrl } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
+import { Providers } from "@/providers";
 import type { Metadata, Viewport } from "next";
 import { Kumbh_Sans } from "next/font/google";
 import "./globals.css";
@@ -37,8 +39,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${kumbhSans.variable} antialiased`}>
-      <body className="flex min-h-dvh flex-col">{children}</body>
+    <html
+      lang="en"
+      className={`${kumbhSans.variable} antialiased`}
+      suppressHydrationWarning
+    >
+      <body className="flex min-h-dvh flex-col">
+        <Providers>
+          <SiteHeader />
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }
