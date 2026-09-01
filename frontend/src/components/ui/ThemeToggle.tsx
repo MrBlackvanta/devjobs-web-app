@@ -16,8 +16,8 @@ export default function ThemeToggle() {
     >
       <span className="sr-only">Dark mode</span>
       <SunIcon />
-      <span className="relative h-6 w-12 rounded-full bg-white">
-        <span className="bg-violet absolute top-1.25 left-1.25 size-3.5 translate-x-0 rounded-full transition-transform duration-200 ease-in-out dark:translate-x-6" />
+      <span className="flex w-12 rounded-full bg-white p-1.25">
+        <span className="bg-violet size-3.5 translate-x-0 rounded-full motion-safe:transition-transform dark:translate-x-6" />
       </span>
       <MoonIcon />
     </button>

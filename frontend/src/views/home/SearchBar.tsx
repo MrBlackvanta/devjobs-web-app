@@ -1,21 +1,21 @@
 "use client";
 
-import {
-  CheckIcon,
-  FilterIcon,
-  LocationIcon,
-  SearchIcon,
-} from "@/components/icons";
+import { FilterIcon, SearchIcon } from "@/components/icons";
 import { filtersToHref } from "@/lib";
 import type { JobFilters } from "@/types";
 import { useRouter } from "next/navigation";
-import { type SubmitEvent, useState, useTransition } from "react";
+import { type SubmitEvent, useRef, useState, useTransition } from "react";
+import FilterDialog from "./FilterDialog";
+import FullTimeField from "./FullTimeField";
+import LocationField from "./LocationField";
 
 export default function SearchBar({ filters }: { filters: JobFilters }) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [applied, setApplied] = useState(filters);
   const [draft, setDraft] = useState(filters);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const filtersTriggerRef = useRef<HTMLButtonElement>(null);
 
   if (
     applied.search !== filters.search ||
@@ -28,6 +28,7 @@ export default function SearchBar({ filters }: { filters: JobFilters }) {
 
   function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
+    setFiltersOpen(false);
     startTransition(() => router.push(filtersToHref(draft), { scroll: false }));
   }
 
@@ -69,56 +70,32 @@ export default function SearchBar({ filters }: { filters: JobFilters }) {
 
       <span className="bg-divider hidden w-px self-stretch md:block" />
 
-      <label className="hidden w-53.25 cursor-text items-center gap-4 pl-6 md:flex lg:w-75">
-        <span className="sr-only">Filter by location</span>
-        <LocationIcon className="text-violet shrink-0" />
-        <span className="relative flex h-full flex-1 items-center">
-          <input
-            id="job-location"
-            name="location"
-            type="text"
-            enterKeyHint="search"
-            placeholder=" "
-            value={draft.location}
-            onChange={(event) =>
-              setDraft({ ...draft, location: event.target.value })
-            }
-            className="peer text-heading h-full w-full bg-transparent focus-visible:-outline-offset-2"
-          />
-          <span
-            aria-hidden="true"
-            className="text-placeholder pointer-events-none absolute top-1/2 left-0 hidden -translate-y-1/2 peer-placeholder-shown:block"
-          >
-            Filter by location…
-          </span>
-        </span>
-      </label>
+      <LocationField
+        className="hidden w-53.25 cursor-text items-center gap-4 pl-6 md:flex lg:w-75"
+        name="location"
+        value={draft.location}
+        onChange={(location) => setDraft({ ...draft, location })}
+      />
 
       <span className="bg-divider hidden w-px self-stretch md:block" />
 
       <div className="flex items-center gap-3 pr-4 md:w-63 md:justify-between md:pl-5 lg:w-86.25 lg:pl-8">
-        <label className="group hidden cursor-pointer items-center gap-4 md:flex">
-          <input
-            type="checkbox"
-            name="fullTime"
-            value="true"
-            checked={draft.fullTime}
-            onChange={(event) =>
-              setDraft({ ...draft, fullTime: event.target.checked })
-            }
-            className="peer sr-only"
-          />
-          <span className="border-control-edge bg-control rounded-check group-hover:border-violet peer-checked:border-violet peer-checked:bg-violet peer-focus-visible:outline-accent grid size-6 place-items-center border text-transparent peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2">
-            <CheckIcon />
-          </span>
-          <span className="text-heading font-bold">
-            Full Time<span className="hidden lg:inline"> Only</span>
-          </span>
-        </label>
+        <FullTimeField
+          className="group hidden cursor-pointer items-center gap-4 md:flex"
+          name="fullTime"
+          checked={draft.fullTime}
+          onChange={(fullTime) => setDraft({ ...draft, fullTime })}
+        >
+          Full Time<span className="hidden lg:inline"> Only</span>
+        </FullTimeField>
 
         <button
+          ref={filtersTriggerRef}
           type="button"
           aria-label="Filters"
+          aria-haspopup="dialog"
+          aria-expanded={filtersOpen}
+          onClick={() => setFiltersOpen(true)}
           className="text-dark-grey hover:text-violet p-3 md:hidden dark:text-white"
         >
           <FilterIcon />
@@ -126,12 +103,20 @@ export default function SearchBar({ filters }: { filters: JobFilters }) {
 
         <button
           type="submit"
-          className="bg-violet rounded-button hover:bg-violet-deep grid size-12 place-items-center font-bold text-white md:h-12 md:w-20 lg:w-30.75"
+          className="v-btn grid size-12 place-items-center md:h-12 md:w-20 lg:w-30.75"
         >
           <SearchIcon className="size-5 md:hidden" />
           <span className="sr-only md:not-sr-only">Search</span>
         </button>
       </div>
+
+      <FilterDialog
+        open={filtersOpen}
+        onOpenChange={setFiltersOpen}
+        triggerRef={filtersTriggerRef}
+        draft={draft}
+        onDraftChange={setDraft}
+      />
     </form>
   );
 }

@@ -100,6 +100,9 @@ html.dark {
   h3 {
     @apply text-heading font-bold;
   }
+  button:not(:disabled) {
+    cursor: pointer;
+  }
   :focus-visible {
     @apply outline-accent outline-2 outline-offset-2;
   }
@@ -107,6 +110,23 @@ html.dark {
 
 @utility v-band-focus {
   @apply focus-visible:outline-white;
+}
+
+@utility v-scroll-lock {
+  position: fixed;
+  inset-inline: 0;
+  top: var(--scroll-lock-top, 0px);
+  @variant md {
+    position: static;
+    top: auto;
+  }
+}
+
+@utility v-btn {
+  @apply bg-violet rounded-button font-bold text-white;
+  @variant hover {
+    @apply bg-violet-deep;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
