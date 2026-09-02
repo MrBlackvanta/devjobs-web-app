@@ -73,6 +73,7 @@ html.dark {
   --text-label--line-height: 1.125rem;
 
   --container-page: 69.375rem;
+  --container-detail: 45.625rem;
 
   --radius-card: 0.375rem;
   --radius-button: 0.3125rem;
@@ -126,6 +127,13 @@ html.dark {
   @apply bg-violet rounded-button font-bold text-white;
   @variant hover {
     @apply bg-violet-deep;
+  }
+}
+
+@utility v-btn-tint {
+  @apply bg-tint rounded-button text-on-tint font-bold;
+  @variant hover {
+    @apply bg-tint-hover text-on-tint-hover;
   }
 }
 

@@ -17,6 +17,19 @@ export type JobSummary = {
   location: string;
 };
 
+export type JobSection = {
+  content: string;
+  items: string[];
+};
+
+export type JobDetail = JobSummary & {
+  website: string;
+  apply: string;
+  description: string;
+  requirements: JobSection;
+  role: JobSection;
+};
+
 export type PagedResult<T> = {
   items: T[];
   page: number;

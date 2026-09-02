@@ -1,5 +1,5 @@
 import { apiUrl } from "@/data";
-import type { JobFilters, JobSummary, PagedResult } from "@/types";
+import type { JobDetail, JobFilters, JobSummary, PagedResult } from "@/types";
 import { jobsPerPage } from "./filters";
 
 export async function fetchJobs(filters: JobFilters, pages: number) {
@@ -20,4 +20,20 @@ export async function fetchJobs(filters: JobFilters, pages: number) {
   }
 
   return (await response.json()) as PagedResult<JobSummary>;
+}
+
+export async function fetchJob(id: string) {
+  if (!/^\d+$/.test(id)) return null;
+
+  const response = await fetch(`${apiUrl}/jobs/${id}`, {
+    next: { revalidate: 60 },
+  });
+
+  if (response.status === 404) return null;
+
+  if (!response.ok) {
+    throw new Error(`Job lookup failed with status ${response.status}`);
+  }
+
+  return (await response.json()) as JobDetail;
 }

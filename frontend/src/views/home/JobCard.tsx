@@ -1,3 +1,4 @@
+import { LinkPending } from "@/components/ui";
 import { formatPostedAt } from "@/lib";
 import type { JobSummary } from "@/types";
 import Link from "next/link";
@@ -24,6 +25,7 @@ export default function JobCard({ job }: { job: JobSummary }) {
           className="group-hover:text-muted after:absolute after:inset-0 focus-visible:outline-hidden"
         >
           {job.position}
+          <LinkPending className="absolute top-8 right-8 size-5 border-2" />
         </Link>
       </h2>
 
