@@ -129,6 +129,39 @@ html.dark {
   }
 }
 
+[data-sweep]::view-transition-old(root),
+[data-sweep]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+[data-sweep="in"]::view-transition-new(root) {
+  animation: v-sweep-open 500ms ease-in-out forwards;
+}
+
+[data-sweep="out"]::view-transition-old(root) {
+  z-index: 1;
+  animation: v-sweep-close 500ms ease-in-out forwards;
+}
+
+@keyframes v-sweep-open {
+  from {
+    clip-path: circle(0% at var(--sweep-x) var(--sweep-y));
+  }
+  to {
+    clip-path: circle(var(--sweep-r) at var(--sweep-x) var(--sweep-y));
+  }
+}
+
+@keyframes v-sweep-close {
+  from {
+    clip-path: circle(var(--sweep-r) at var(--sweep-x) var(--sweep-y));
+  }
+  to {
+    clip-path: circle(0% at var(--sweep-x) var(--sweep-y));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
