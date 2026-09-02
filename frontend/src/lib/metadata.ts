@@ -6,7 +6,7 @@ const images = [
     url: "/opengraph-image.jpg",
     width: 1200,
     height: 630,
-    alt: "The devjobs board, listing developer roles with each company's logo, posting age, contract type and location.",
+    alt: "The devjobs board beside the headline “Find your next developer role”, its postings showing each company's logo, posting age, contract type and location.",
   },
 ];
 
