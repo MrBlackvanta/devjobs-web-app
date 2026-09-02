@@ -1,7 +1,5 @@
 "use client";
 
-import { flushSync } from "react-dom";
-
 type Origin = { x: number; y: number };
 
 function canAnimate() {
@@ -41,7 +39,7 @@ export function withThemeSweep(
   );
   root.dataset.sweep = closing ? "out" : "in";
 
-  const transition = document.startViewTransition(() => flushSync(update));
+  const transition = document.startViewTransition(update);
   transition.ready.catch(clearSweep);
   transition.finished.then(clearSweep, clearSweep);
 }

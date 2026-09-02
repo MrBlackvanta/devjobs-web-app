@@ -129,6 +129,11 @@ html.dark {
   }
 }
 
+@utility v-spinner {
+  @apply inline-block shrink-0 rounded-full border-current border-t-transparent;
+  animation: v-spin 700ms linear infinite;
+}
+
 [data-sweep]::view-transition-old(root),
 [data-sweep]::view-transition-new(root) {
   animation: none;
@@ -162,6 +167,12 @@ html.dark {
   }
 }
 
+@keyframes v-spin {
+  to {
+    rotate: 1turn;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -169,5 +180,10 @@ html.dark {
     transition-duration: 1ms !important;
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .v-spinner {
+    animation-duration: 1600ms !important;
+    animation-iteration-count: infinite !important;
   }
 }

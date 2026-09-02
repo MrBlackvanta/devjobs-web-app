@@ -1,6 +1,7 @@
 import { parseFilters, parsePages } from "@/lib";
 import type { SearchParams } from "@/types";
-import { JobGrid, SearchBar } from "@/views/home";
+import { JobGrid, JobGridPending, SearchBar } from "@/views/home";
+import { Suspense } from "react";
 
 export default async function HomePage({
   searchParams,
@@ -16,7 +17,9 @@ export default async function HomePage({
       <h1 className="sr-only">Developer job listings</h1>
       <div className="max-w-page mx-auto -mt-10">
         <SearchBar filters={filters} />
-        <JobGrid filters={filters} pages={pages} />
+        <Suspense fallback={<JobGridPending />}>
+          <JobGrid filters={filters} pages={pages} />
+        </Suspense>
       </div>
     </main>
   );

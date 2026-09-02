@@ -1,7 +1,6 @@
 import { SiteHeader } from "@/components/layout";
 import { siteName, siteUrl } from "@/data";
-import { pageMetadata } from "@/lib";
-import { Providers } from "@/providers";
+import { pageMetadata, themeScript } from "@/lib";
 import type { Metadata, Viewport } from "next";
 import { Kumbh_Sans } from "next/font/google";
 import "./globals.css";
@@ -45,10 +44,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-dvh flex-col">
-        <Providers>
-          <SiteHeader />
-          {children}
-        </Providers>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <SiteHeader />
+        {children}
       </body>
     </html>
   );

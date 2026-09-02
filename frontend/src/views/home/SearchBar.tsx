@@ -1,6 +1,7 @@
 "use client";
 
 import { FilterIcon, SearchIcon } from "@/components/icons";
+import { Spinner } from "@/components/ui";
 import { filtersToHref } from "@/lib";
 import type { JobFilters } from "@/types";
 import { useRouter } from "next/navigation";
@@ -37,7 +38,6 @@ export default function SearchBar({ filters }: { filters: JobFilters }) {
       action="/"
       role="search"
       aria-label="Filter jobs"
-      aria-busy={pending}
       onSubmit={handleSubmit}
       className="bg-surface rounded-card relative flex h-20"
     >
@@ -103,10 +103,16 @@ export default function SearchBar({ filters }: { filters: JobFilters }) {
 
         <button
           type="submit"
-          className="v-btn grid size-12 place-items-center md:h-12 md:w-20 lg:w-30.75"
+          aria-busy={pending}
+          className="group v-btn grid size-12 place-items-center md:h-12 md:w-20 lg:w-30.75"
         >
-          <SearchIcon className="size-5 md:hidden" />
-          <span className="sr-only md:not-sr-only">Search</span>
+          <span className="col-start-1 row-start-1 flex items-center group-aria-busy:opacity-0">
+            <SearchIcon className="size-5 md:hidden" />
+            <span className="sr-only md:not-sr-only">Search</span>
+          </span>
+          {pending && (
+            <Spinner className="col-start-1 row-start-1 size-5 border-2" />
+          )}
         </button>
       </div>
 

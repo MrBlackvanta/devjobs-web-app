@@ -1,13 +1,11 @@
 "use client";
 
 import { MoonIcon, SunIcon } from "@/components/icons";
-import { withThemeSweep } from "@/lib";
-import { useTheme } from "next-themes";
+import { setTheme, useTheme, withThemeSweep } from "@/lib";
 import type { MouseEvent } from "react";
 
 export default function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const isDark = useTheme() === "dark";
 
   function toggle(event: MouseEvent<HTMLButtonElement>) {
     const { left, top, width, height } =

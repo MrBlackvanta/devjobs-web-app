@@ -1,5 +1,6 @@
 "use client";
 
+import { Spinner } from "@/components/ui";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
@@ -17,9 +18,14 @@ export default function LoadMore({ href }: { href: string }) {
           event.preventDefault();
           startTransition(() => router.push(href, { scroll: false }));
         }}
-        className="v-btn grid h-12 w-35.25 place-items-center"
+        className="group v-btn grid h-12 w-35.25 place-items-center"
       >
-        Load More
+        <span className="col-start-1 row-start-1 group-aria-busy:opacity-0">
+          Load More
+        </span>
+        {pending && (
+          <Spinner className="col-start-1 row-start-1 size-6 border-2" />
+        )}
       </Link>
     </div>
   );
