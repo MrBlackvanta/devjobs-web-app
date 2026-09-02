@@ -2,6 +2,8 @@ import { apiUrl } from "@/data";
 import type { JobDetail, JobFilters, JobSummary, PagedResult } from "@/types";
 import { jobsPerPage } from "./filters";
 
+const jobCacheSeconds = 60 * 60;
+
 export async function fetchJobs(filters: JobFilters, pages: number) {
   const query = new URLSearchParams({
     pageSize: String(jobsPerPage * pages),
@@ -12,7 +14,7 @@ export async function fetchJobs(filters: JobFilters, pages: number) {
   if (filters.fullTime) query.set("fullTime", "true");
 
   const response = await fetch(`${apiUrl}/jobs?${query}`, {
-    next: { revalidate: 60 },
+    next: { revalidate: jobCacheSeconds },
   });
 
   if (!response.ok) {
@@ -26,7 +28,7 @@ export async function fetchJob(id: string) {
   if (!/^\d+$/.test(id)) return null;
 
   const response = await fetch(`${apiUrl}/jobs/${id}`, {
-    next: { revalidate: 60 },
+    next: { revalidate: jobCacheSeconds },
   });
 
   if (response.status === 404) return null;
