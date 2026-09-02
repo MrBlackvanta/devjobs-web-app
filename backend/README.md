@@ -147,7 +147,7 @@ The next `dotnet run` applies pending migrations automatically (via `DbInitializ
 
 ## Deployment
 
-The included Dockerfile builds and runs on any container platform.
+The included Dockerfile builds and runs on any container platform. `render.yaml` at the repository root declares the service for Render — name, region, Docker context, health check and environment — so a Blueprint deploy reproduces it without dashboard configuration. The declared name fixes the hostname the frontend's `API_URL` points at, so renaming the service breaks the site.
 
 **Required environment variables on the platform:**
 

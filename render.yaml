@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vanta-devjobs-api
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /health
+    buildFilter:
+      paths:
+        - backend/**
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: Cors__AllowedOrigins__0
+        value: https://devjobs-web-app.abdelrhman-ahmed8881.workers.dev
