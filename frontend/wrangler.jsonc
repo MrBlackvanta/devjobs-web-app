@@ -9,6 +9,12 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "devjobs-web-app-cache"
+    }
+  ],
   "vars": {
     "API_URL": "https://vanta-devjobs-api.onrender.com",
     "SITE_URL": "https://devjobs-web-app.abdelrhman-ahmed8881.workers.dev"

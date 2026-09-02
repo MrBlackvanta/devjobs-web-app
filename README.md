@@ -1,4 +1,4 @@
-# devjobs
+# Devjobs web app
 
 My solution to the [Devjobs web app](https://www.frontendmentor.io/challenges/devjobs-web-app-HuvC_LP4l)
 challenge on Frontend Mentor.
@@ -10,10 +10,11 @@ challenge on Frontend Mentor.
 
 ## Built with
 
-- Next.js 16 and React 19
+- Next.js 16
+- React 19
 - TypeScript
 - Tailwind CSS v4
-- A .NET API for the data (see `backend/`)
+- .NET (see `backend/`)
 
 ## Author
 
