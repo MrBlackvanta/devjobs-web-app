@@ -10,10 +10,10 @@ challenge on Frontend Mentor.
 
 ## Built with
 
-- Next.js 16
-- React 19
+- Next.js
+- React
 - TypeScript
-- Tailwind CSS v4
+- Tailwind CSS
 - .NET (see `backend/`)
 
 ## Author
