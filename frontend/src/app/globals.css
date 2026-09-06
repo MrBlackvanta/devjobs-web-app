@@ -10,7 +10,7 @@
   --muted: #617289;
   --accent: #5964e0;
   --accent-strong: #3340d9;
-  --placeholder: #70757d;
+  --placeholder: #6a6e76;
   --control: #19202d1a;
   --control-edge: #667890;
   --divider: #6e809833;
@@ -27,7 +27,7 @@ html.dark {
   --muted: #9daec2;
   --accent: #939bf4;
   --accent-strong: #939bf4;
-  --placeholder: #8c9096;
+  --placeholder: #9b9ea3;
   --control: #ffffff1a;
   --control-edge: #667890;
   --tint: #ffffff1a;
@@ -111,6 +111,13 @@ html.dark {
 
 @utility v-band-focus {
   @apply focus-visible:outline-white;
+}
+
+@utility v-field-focus {
+  @apply motion-safe:transition-colors;
+  &:has(:focus-visible) {
+    @apply bg-tint;
+  }
 }
 
 @utility v-scroll-lock {

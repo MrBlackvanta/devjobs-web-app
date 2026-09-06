@@ -40,7 +40,7 @@ export default function FilterDialog({
         className="bg-surface rounded-card w-full"
       >
         <LocationField
-          className="flex h-18 cursor-text items-center gap-4 px-6"
+          className="v-field-focus rounded-t-card flex h-18 cursor-text items-center gap-4 px-6"
           value={draft.location}
           onChange={(location) => onDraftChange({ ...draft, location })}
         />

@@ -17,7 +17,7 @@ export default function LocationField({
     <label className={className}>
       <span className="sr-only">Filter by location</span>
       <LocationIcon className="text-violet shrink-0" />
-      <span className="relative -ml-2 flex h-full flex-1 items-center">
+      <span className="relative flex h-full flex-1 items-center">
         <input
           name={name}
           type="text"
@@ -25,11 +25,11 @@ export default function LocationField({
           placeholder=" "
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className="peer text-heading h-full w-full bg-transparent px-2 focus-visible:-outline-offset-2"
+          className="peer text-heading h-full w-full bg-transparent pe-2 focus-visible:outline-transparent"
         />
         <span
           aria-hidden="true"
-          className="text-placeholder pointer-events-none absolute top-1/2 left-2 hidden -translate-y-1/2 peer-placeholder-shown:block"
+          className="text-placeholder pointer-events-none absolute top-1/2 left-0 hidden -translate-y-1/2 peer-placeholder-shown:block"
         >
           Filter by location…
         </span>
