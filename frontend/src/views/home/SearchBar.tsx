@@ -44,7 +44,7 @@ export default function SearchBar({ filters }: { filters: JobFilters }) {
       <label className="flex flex-1 cursor-text items-center gap-4 pl-6 lg:pl-8">
         <span className="sr-only">Filter by title, companies, expertise</span>
         <SearchIcon className="text-violet hidden shrink-0 md:block" />
-        <span className="relative flex h-full flex-1 items-center">
+        <span className="relative -ml-2 flex h-full flex-1 items-center">
           <input
             id="job-search"
             name="search"
@@ -55,11 +55,11 @@ export default function SearchBar({ filters }: { filters: JobFilters }) {
             onChange={(event) =>
               setDraft({ ...draft, search: event.target.value })
             }
-            className="peer text-heading h-full w-full bg-transparent focus-visible:-outline-offset-2"
+            className="peer text-heading h-full w-full bg-transparent px-2 focus-visible:-outline-offset-2"
           />
           <span
             aria-hidden="true"
-            className="text-placeholder pointer-events-none absolute top-1/2 left-0 hidden -translate-y-1/2 peer-placeholder-shown:block"
+            className="text-placeholder pointer-events-none absolute top-1/2 left-2 hidden -translate-y-1/2 peer-placeholder-shown:block"
           >
             Filter by title
             <span className="xl:hidden">…</span>
